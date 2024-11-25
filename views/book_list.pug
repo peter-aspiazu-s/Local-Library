@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1.text-center.mt-4.mb-4= title
+
+  if book_list.length
+    div(class="book-list-container")
+      each book in book_list
+        div(class="card mb-3 shadow-sm")
+          div(class="card-body")
+            h5(class="card-title")
+              a(href=book.url class="text-decoration-none text-dark") #{book.title}
+            p(class="card-text text-muted") by #{book.author.name}
+
+  else
+    div(class="alert alert-warning text-center mt-4") 
+      p There are no books.

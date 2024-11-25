@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  div(class="container mt-4")
+    h1.text-center.mb-4= title
+
+    // Formulario
+    form(method='POST' class="shadow-sm p-4 bg-light rounded")
+      div.form-group
+        label(for='first_name' class="font-weight-bold") First Name:
+        input#first_name.form-control(type='text' placeholder='First name (Christian)' name='first_name' required value=(undefined===author ? '' : author.first_name) )
+
+      div.form-group
+        label(for='family_name' class="font-weight-bold") Family Name:
+        input#family_name.form-control(type='text' placeholder='Family name (Surname)' name='family_name' required value=(undefined===author ? '' : author.family_name) )
+
+      div.form-group
+        label(for='date_of_birth' class="font-weight-bold") Date of Birth:
+        input#date_of_birth.form-control(type='date' name='date_of_birth' value=(undefined===author ? '' : author.date_of_birth_yyyy_mm_dd) )
+
+      div.form-group
+        label(for='date_of_death' class="font-weight-bold") Date of Death:
+        input#date_of_death.form-control(type='date' name='date_of_death' value=(undefined===author ? '' : author.date_of_death_yyyy_mm_dd) )
+
+      button.btn.btn-primary.btn-block.mt-3(type='submit') Submit
+
+    // Mensajes de error
+    if errors
+      div(class="alert alert-danger mt-3")
+        ul.mb-0
+          for error in errors
+            li!= error.msg

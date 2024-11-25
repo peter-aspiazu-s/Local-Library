@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  div(class="container mt-4")
+    h1.text-center.mb-4 #{title}
+
+    // Formulario
+    form(method='POST' class="shadow-sm p-4 bg-light rounded")
+      // Campo de título
+      div.form-group
+        label(for='title' class="font-weight-bold") Title:
+        input#title.form-control(type='text', placeholder='Name of book' name='title' required value=(undefined===book ? '' : book.title) )
+
+      // Campo de autor
+      div.form-group
+        label(for='author' class="font-weight-bold") Author:
+        select#author.form-control(name='author' required)
+          option(value='') --Please select an author--
+          for author in authors
+            if book
+              if author._id.toString()===book.author._id.toString()
+                option(value=author._id selected) #{author.name}
+              else
+                option(value=author._id) #{author.name}
+            else
+              option(value=author._id) #{author.name}
+
+      // Resumen
+      div.form-group
+        label(for='summary' class="font-weight-bold") Summary:
+        textarea#summary.form-control(placeholder='Summary' name='summary' rows="4" required)= undefined===book ? '' : book.summary
+
+      // ISBN
+      div.form-group
+        label(for='isbn' class="font-weight-bold") ISBN:
+        input#isbn.form-control(type='text', placeholder='ISBN13' name='isbn' value=(undefined===book ? '' : book.isbn) required)
+
+      // Géneros
+      div.form-group
+        label(class="font-weight-bold") Genre:
+        div
+          for genre in genres
+            div.custom-control.custom-checkbox(style="display: inline-block; margin-right: 10px;")
+              if genre.checked
+                input.custom-control-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked)
+              else
+                input.custom-control-input(type='checkbox', name='genre', id=genre._id, value=genre._id)
+              label.custom-control-label(for=genre._id) #{genre.name}
+
+      // Botón de envío
+      button.btn.btn-primary.btn-block.mt-3(type='submit') Submit
+
+    // Mensajes de error
+    if errors
+      div(class="alert alert-danger mt-3")
+        ul.mb-0
+          for error in errors
+            li!= error.msg
