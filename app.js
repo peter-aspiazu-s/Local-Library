@@ -21,7 +21,13 @@ const mongoDB = process.env.MONGODB_URL;
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(mongoDB);
+  // await mongoose.connect(mongoDB);
+  await mongoose.connect(mongoDB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Incrementar el timeout
+    connectTimeoutMS: 10000, // Tiempo adicional para la conexión
+  });
 }
 
 // view engine setup
