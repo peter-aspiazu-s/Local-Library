@@ -5,9 +5,9 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width', initial-scale='1')
     link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css", integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N", crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js", integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js")
-    link(rel='stylesheet', href='/stylesheets/style.css')
     style.
       /* Estilo para el botón flotante */
       .floating-button {
@@ -102,3 +102,5 @@ html(lang='en')
       a(href='/catalog/genre/create') Create new Gender
       a(href='/catalog/book/create') Create new Book
       a(href='/catalog/bookinstance/create') Create new book instance
+
+    script(src="/javascript/circular-progress.js") <!-- Referencia al archivo JS -->

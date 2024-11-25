@@ -9,27 +9,32 @@ block content
 
     .row.mt-4
       .col-md-3
-        .card
-          .card-body
-            h5.card-title.text-center #[strong Books:]
-            p.text-center= book_count
+        .circular-progress(data-value=book_count data-max=100)
+          .circle
+          .label
+            span Books:
+            .value
       .col-md-3
-        .card
-          .card-body
-            h5.card-title.text-center #[strong Copies:]
-            p.text-center= book_instance_count
+        .circular-progress(data-value=book_instance_count data-max=100)
+          .circle
+          .label
+            span Copies:
+            .value
       .col-md-3
-        .card
-          .card-body
-            h5.card-title.text-center #[strong Copies available:]
-            p.text-center= book_instance_available_count
+        .circular-progress(data-value=book_instance_available_count data-max=100)
+          .circle
+          .label
+            span Available:
+            .value
       .col-md-3
-        .card
-          .card-body
-            h5.card-title.text-center #[strong Authors:]
-            p.text-center= author_count
+        .circular-progress(data-value=author_count data-max=100)
+          .circle
+          .label
+            span Authors:
+            .value
       .col-md-3
-        .card
-          .card-body
-            h5.card-title.text-center #[strong Genres:]
-            p.text-center= genre_count
+        .circular-progress(data-value=genre_count data-max=100)
+          .circle
+          .label
+            span Genres:
+            .value
